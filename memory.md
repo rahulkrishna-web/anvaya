@@ -5,3 +5,4 @@
 [2026-04-19 13:04] Integrated local "Alta" font (Light, Regular, Caption) and updated global serif theme. [0.3]
 [2026-04-19 13:08] Aligned floating Navbar with Hero section padding (md:px-20). [0.2]
 [2026-04-19 13:09] Updated floating Navbar to span full width with 1rem gaps from browser bounds. [0.1]
+[2026-04-19 13:23] Restructured landing page: added Marquee, updated Services (4 items), and redesigned Contact form. [1.5]

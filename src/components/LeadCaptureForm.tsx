@@ -2,13 +2,14 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export default function LeadCaptureForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    company: "",
-    industry: "",
+    phone: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -18,74 +19,25 @@ export default function LeadCaptureForm() {
     setIsSubmitting(true);
     
     try {
-      // 1. Collect client-side metadata
-      const clientMetadata = {
-        userAgent: navigator.userAgent,
-        platform: (navigator as any).userAgentData?.platform || navigator.platform,
-        screenResolution: `${window.screen.width}x${window.screen.height}`,
-      };
-
-      // 2. Fetch IP and Location metadata (using free ipapi.co as an example)
-      let geoMetadata = { ip: "N/A", location: "N/A" };
-      try {
-        const geoResponse = await fetch("https://ipapi.co/json/");
-        if (geoResponse.ok) {
-          const geoData = await geoResponse.json();
-          geoMetadata = {
-            ip: geoData.ip,
-            location: `${geoData.city}, ${geoData.region}, ${geoData.country_name}`
-          };
-        }
-      } catch (geoError) {
-        console.warn("Failed to fetch geo metadata:", geoError);
-      }
-
-      // 3. Prepare full payload
-      const payload = {
-        ...formData,
-        metadata: {
-          ...clientMetadata,
-          ...geoMetadata
-        }
-      };
-
-      // 4. Submit to Google Sheets
-      const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL || "";
-      
-      if (!scriptUrl) {
-        console.warn("Google Sheets URL not found. Falling back to simulation.");
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        console.log("Simulated payload:", payload);
-      } else {
-        // Using 'no-cors' mode is the only reliable way to POST to Google Apps Script from a browser
-        // Limitations: We cannot read the response, but the data will be sent.
-        await fetch(scriptUrl, {
-          method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "text/plain", // Use text/plain to avoid CORS preflight
-          },
-          body: JSON.stringify(payload),
-        });
-      }
+      // Simulation of submission
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      console.log("Form submitted:", formData);
 
       setIsSubmitting(false);
       setIsSuccess(true);
       
-      // Reset form after success
       setTimeout(() => {
         setIsSuccess(false);
-        setFormData({ name: "", email: "", company: "", industry: "" });
+        setFormData({ name: "", email: "", phone: "", message: "" });
       }, 5000);
       
     } catch (error) {
       console.error("Submission error:", error);
       setIsSubmitting(false);
-      alert("Something went wrong. Please try again later.");
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -94,33 +46,23 @@ export default function LeadCaptureForm() {
       <motion.div 
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col items-center justify-center py-12 text-center"
+        className="flex flex-col items-start justify-center py-12"
       >
-        <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-brand-yellow/20 text-brand-yellow">
-          <svg
-            className="h-10 w-10"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <h4 className="text-2xl font-bold text-white">Request Received</h4>
-        <p className="mt-4 text-lg text-white/60">
-          Thank you for your interest. Our team will be in touch shortly.
+        <h4 className="text-3xl font-serif text-black">Message Received.</h4>
+        <p className="mt-4 text-black/60 font-light">
+          We'll get back to you shortly.
         </p>
       </motion.div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mx-auto max-w-xl space-y-6">
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <div>
-          <label htmlFor="name" className="mb-2 block text-sm font-medium text-white/80">
-            Full Name *
+    <form onSubmit={handleSubmit} className="w-full space-y-12 bg-white text-black">
+      {/* Top 3 Fields */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="relative border-b border-black/10 py-2 focus-within:border-black transition-colors">
+          <label htmlFor="name" className="block text-sm font-light text-black/40 mb-1">
+            Your Name
           </label>
           <input
             type="text"
@@ -129,14 +71,13 @@ export default function LeadCaptureForm() {
             required
             value={formData.name}
             onChange={handleChange}
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/20 transition-all focus:border-brand-yellow/50 focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-brand-yellow/50"
-            placeholder="John Doe"
+            className="w-full bg-transparent text-black placeholder-black/10 focus:outline-none"
           />
         </div>
 
-        <div>
-          <label htmlFor="email" className="mb-2 block text-sm font-medium text-white/80">
-            Work Email *
+        <div className="relative border-b border-black/10 py-2 focus-within:border-black transition-colors">
+          <label htmlFor="email" className="block text-sm font-light text-black/40 mb-1">
+            Email Address
           </label>
           <input
             type="email"
@@ -145,54 +86,52 @@ export default function LeadCaptureForm() {
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/20 transition-all focus:border-brand-yellow/50 focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-brand-yellow/50"
-            placeholder="john@company.com"
+            className="w-full bg-transparent text-black placeholder-black/10 focus:outline-none"
+          />
+        </div>
+
+        <div className="relative border-b border-black/10 py-2 focus-within:border-black transition-colors">
+          <label htmlFor="phone" className="block text-sm font-light text-black/40 mb-1">
+            Phone Number (optional)
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full bg-transparent text-black placeholder-black/10 focus:outline-none"
           />
         </div>
       </div>
 
-      <div>
-        <label htmlFor="company" className="mb-2 block text-sm font-medium text-white/80">
-          Company Name *
+      {/* Message Field */}
+      <div className="relative border-b border-black/10 py-2 focus-within:border-black transition-colors">
+        <label htmlFor="message" className="block text-sm font-light text-black/40 mb-4">
+          Message
         </label>
-        <input
-          type="text"
-          id="company"
-          name="company"
+        <textarea
+          id="message"
+          name="message"
+          rows={1}
           required
-          value={formData.company}
+          value={formData.message}
           onChange={handleChange}
-          className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/20 transition-all focus:border-brand-yellow/50 focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-brand-yellow/50"
-          placeholder="Acme Corp"
+          className="w-full bg-transparent text-black placeholder-black/10 focus:outline-none resize-none"
         />
       </div>
 
-      <div>
-        <label htmlFor="industry" className="mb-2 block text-sm font-medium text-white/80">
-          Industry / Application <span className="text-white/40 font-normal">(Optional)</span>
-        </label>
-        <input
-          type="text"
-          id="industry"
-          name="industry"
-          value={formData.industry}
-          onChange={handleChange}
-          className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/20 transition-all focus:border-brand-yellow/50 focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-brand-yellow/50"
-          placeholder="e.g. Data Center, Healthcare"
-        />
+      {/* Submit Button */}
+      <div className="flex justify-start pt-6">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="flex items-center gap-4 rounded-full bg-gradient-to-r from-[#E5A1BA] to-[#BEA9DE] px-8 py-4 font-medium text-black shadow-lg transition-transform active:scale-95 disabled:opacity-70"
+        >
+          {isSubmitting ? "Sending..." : "Leave us a Message"}
+          <ArrowRight className="w-4 h-4" />
+        </button>
       </div>
-
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full rounded-xl bg-white py-4 font-bold text-black shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all hover:bg-brand-yellow active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70 md:text-lg uppercase tracking-widest"
-      >
-        {isSubmitting ? "Submitting..." : "Let's Connect"}
-      </button>
-
-      <p className="text-center text-xs text-white/30">
-        By submitting, you agree to receive communications from Anvaya Studios.
-      </p>
     </form>
   );
 }
