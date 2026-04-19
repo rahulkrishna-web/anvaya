@@ -1,4 +1,7 @@
-# Project Memory - Anvaya
-
-## 2026-04-18 17:28
-- Initialized Next.js project with TypeScript, Tailwind CSS, and ESLint. [0.5]
+[2026-04-19 12:43] Rebranded Anvaya Studios from Prysm Filters. Implemented new aesthetic based on brand identity image, updated hero, services, and global styles. [2.5]
+[2026-04-19 12:45] Fixed CSS parsing error in globals.css by moving Google Fonts import to the top. [0.5]
+[2026-04-19 13:02] Updated Hero and Navbar to the "Light/Ethereal" style with floating glassmorphism and background image. [1.0]
+[2026-04-19 13:03] Corrected Hero alignment to left-aligned based on reference image. [0.2]
+[2026-04-19 13:04] Integrated local "Alta" font (Light, Regular, Caption) and updated global serif theme. [0.3]
+[2026-04-19 13:08] Aligned floating Navbar with Hero section padding (md:px-20). [0.2]
+[2026-04-19 13:09] Updated floating Navbar to span full width with 1rem gaps from browser bounds. [0.1]

@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Alta';
+  src: url('/Alta_Font/Alta_regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Alta';
+  src: url('/Alta_Font/Alta_light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Alta';
+  src: url('/Alta_Font/Alta_caption.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@theme {
+  --color-anvaya-primary: #000000;
+  --color-anvaya-secondary: #ffffff;
+  
+  /* Brand Palette Accents */
+  --color-brand-olive: #ABB171;
+  --color-brand-yellow: #F8D992;
+  --color-brand-peach: #EE9F57;
+  --color-brand-pink: #E5A1BA;
+  --color-brand-purple: #BEA9DE;
+  --color-brand-blue: #AEC4E1;
+  
+  --font-serif: "Alta", "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-serif {
+  font-family: var(--font-serif);
+}
