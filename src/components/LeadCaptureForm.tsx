@@ -19,9 +19,48 @@ export default function LeadCaptureForm() {
     setIsSubmitting(true);
     
     try {
-      // Simulation of submission
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log("Form submitted:", formData);
+      // 1. Collect User Metadata
+      const userAgent = navigator.userAgent;
+      let ip = "unknown";
+      try {
+        const ipRes = await fetch("https://api.ipify.org?format=json");
+        const ipData = await ipRes.json();
+        ip = ipData.ip;
+      } catch (e) {
+        console.warn("Could not fetch IP", e);
+      }
+
+      // 2. Retrieve Marketing Data
+      const marketingData = JSON.parse(sessionStorage.getItem("anvaya_marketing") || "{}");
+
+      // 3. Prepare Payload
+      const payload = {
+        ...formData,
+        ...marketingData,
+        ip,
+        userAgent,
+        page_url: window.location.href,
+        referrer: document.referrer,
+      };
+
+      // 4. Submit to Google Apps Script
+      const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL;
+      
+      if (!scriptUrl) {
+        console.warn("NEXT_PUBLIC_GOOGLE_SHEETS_URL is not defined. Simulating submission.");
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        console.log("Payload:", payload);
+      } else {
+        await fetch(scriptUrl, {
+          method: "POST",
+          mode: "no-cors", // Required for Google Apps Script Web Apps
+          cache: "no-cache",
+          headers: {
+            "Content-Type": "text/plain", // Avoid CORS preflight with text/plain
+          },
+          body: JSON.stringify(payload)
+        });
+      }
 
       setIsSubmitting(false);
       setIsSuccess(true);

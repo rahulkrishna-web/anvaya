@@ -23,7 +23,8 @@
 }
 
 @theme {
-  --color-anvaya-primary: #000000;
+  --color-black: #1E1E1E;
+  --color-anvaya-primary: #1E1E1E;
   --color-anvaya-secondary: #ffffff;
   
   /* Brand Palette Accents */
@@ -39,7 +40,7 @@
 }
 
 :root {
-  --background: #000000;
+  --background: #1E1E1E;
   --foreground: #ffffff;
 }
 

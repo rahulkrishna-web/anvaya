@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Suspense } from "react";
+import MarketingTracker from "@/components/MarketingTracker";
 
 export const metadata: Metadata = {
-  title: "Anvaya Studios | Different parts. One system.",
-  description: "Anvaya Studios connects the dots across strategy, creativity and performance to build brands that grow with clarity.",
+  title: "Anvaya Studio | Strategy, Design, Growth",
+  description: "We connect the dots. You get results. A premier agency for strategic brand growth and creative direction.",
 };
 
 export default function RootLayout({
@@ -17,6 +19,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="antialiased" suppressHydrationWarning>
+        <Suspense fallback={null}>
+          <MarketingTracker />
+        </Suspense>
         {children}
       </body>
     </html>

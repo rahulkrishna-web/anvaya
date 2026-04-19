@@ -4,7 +4,6 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Marquee from "@/components/Marquee";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
-import { Orbit, Zap, MonitorUp, Paintbrush } from "lucide-react";
 
 export default function Home() {
   const scrollToContact = () => {
@@ -15,23 +14,19 @@ export default function Home() {
   const services = [
     { 
       name: "Strategic Thinking", 
-      icon: Orbit,
-      description: "Defining the core logic that drives your brand toward scaled results."
+      icon: "/icons/strategic-thinking.svg",
     },
     { 
       name: "Brand Positioning", 
-      icon: Zap,
-      description: "Crafting a unique voice and identity that resonates at first touch."
+      icon: "/icons/brand-positioning.svg",
     },
     { 
       name: "Conversion & Websites", 
-      icon: MonitorUp,
-      description: "High-performance digital experiences built to turn visitors into fans."
+      icon: "/icons/conversion.svg",
     },
     { 
       name: "Creative Direction", 
-      icon: Paintbrush,
-      description: "Visual storytelling that connects emotional triggers with strategic goals."
+      icon: "/icons/creative-direction.svg",
     },
   ];
 
@@ -39,33 +34,35 @@ export default function Home() {
     <main className="flex min-h-screen flex-col bg-white text-black">
       {/* Section 1: Hero */}
       <section 
-        className="relative min-h-screen w-full flex flex-col items-start justify-center px-6 md:px-20 text-left"
+        className="relative min-h-screen w-full flex flex-col items-start justify-center px-6 md:px-20 text-left pt-20"
         style={{
-          backgroundImage: "url('/lead-bg.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
+          background: "radial-gradient(55.13% 128.99% at 37.34% 53.95%, #F8E19D 10.78%, #F0AC4D 28.85%, #E790A2 58.65%, #DCBDE7 78.85%, #B0C7EA 100%)"
         }}
       >
         <Navbar onGetAccessClick={scrollToContact} />
         
         {/* Content Overlay */}
-        <div className="z-10 flex flex-col items-start gap-12 max-w-5xl mt-20">
-          <h1 className="text-6xl md:text-9xl font-extralight tracking-tight text-black leading-tight uppercase">
-            We connect the dots <br />
-            You get the results
-          </h1>
+        <div className="z-10 flex flex-col items-start gap-8 max-w-6xl">
+          <div className="flex flex-col gap-0">
+            <h1 className="text-7xl md:text-[120px] font-extralight tracking-tight text-black leading-[0.9] uppercase font-serif">
+              We connect the dots
+            </h1>
+            <h1 className="text-7xl md:text-[120px] font-extralight tracking-tight text-black leading-[0.9] uppercase font-serif">
+              You get the results
+            </h1>
+          </div>
           
-          <div className="flex flex-col sm:flex-row items-center gap-6">
+          <div className="flex flex-col gap-8 items-start mt-4">
+            <p className="text-xl md:text-2xl font-normal text-black/80 max-w-xl leading-relaxed">
+              Anvaya Studio is a strategy-led practice. <br />
+              Full website coming soon.
+            </p>
+
             <button 
               onClick={scrollToContact}
-              className="px-12 py-5 bg-white text-black rounded-full font-medium shadow-xl hover:shadow-2xl transition-all active:scale-95"
+              className="px-12 py-5 bg-white text-black rounded-full font-medium shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.15)] transition-all active:scale-95 text-lg"
             >
               Let&apos;s Connect
-            </button>
-            <button 
-              className="px-12 py-5 border border-black text-black rounded-full font-medium hover:bg-black hover:text-white transition-all active:scale-95"
-            >
-              View Portfolio
             </button>
           </div>
         </div>
@@ -80,10 +77,14 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
             {services.map((service, idx) => (
               <div key={idx} className="flex flex-col items-center gap-6">
-                <div className="w-16 h-16 flex items-center justify-center">
-                  <service.icon className="w-12 h-12 stroke-[1.25]" />
+                <div className="w-20 h-20 flex items-center justify-center">
+                  <img 
+                    src={service.icon} 
+                    alt={service.name} 
+                    className="w-full h-full object-contain"
+                  />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold max-w-[150px] leading-tight">
+                <h3 className="text-xl md:text-2xl font-bold max-w-[150px] leading-tight text-black">
                   {service.name}
                 </h3>
               </div>
@@ -110,7 +111,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="flex items-center">
             <span className="font-serif text-lg font-bold tracking-widest uppercase">
-              Anvaya Studios
+              Anvaya Studio
             </span>
           </div>
           
@@ -123,7 +124,7 @@ export default function Home() {
               <span>Growth</span>
             </div>
             <p className="text-[10px] tracking-widest text-black/20 uppercase font-medium">
-              © {new Date().getFullYear()} Anvaya Studios. All rights reserved.
+              © {new Date().getFullYear()} Anvaya Studio. All rights reserved.
             </p>
           </div>
         </div>
