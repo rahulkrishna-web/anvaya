@@ -20,7 +20,7 @@ export default function Navbar({ onGetAccessClick }: NavbarProps) {
       >
         {/* Logo and Branding */}
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 relative rounded-lg overflow-hidden bg-white/20 backdrop-blur-sm">
+          <div className="w-8 h-8 md:w-9 md:h-9 relative rounded-lg overflow-hidden bg-white/20 backdrop-blur-sm flex-shrink-0">
             <Image 
               src="/anvaya-logo.svg" 
               alt="Anvaya Logo" 
@@ -28,13 +28,13 @@ export default function Navbar({ onGetAccessClick }: NavbarProps) {
               className="object-contain p-1"
             />
           </div>
-          <span className="font-serif text-lg font-bold tracking-widest uppercase">
+          <span className="font-serif text-base md:text-lg font-bold tracking-widest uppercase whitespace-nowrap">
             Anvaya Studio
           </span>
         </div>
 
-        {/* Links */}
-        <div className="flex items-center gap-6">
+        {/* Links - Hidden on mobile */}
+        <div className="hidden md:flex items-center gap-6">
           <button 
             onClick={onGetAccessClick}
             className="text-sm font-medium hover:text-white/80 transition-colors"

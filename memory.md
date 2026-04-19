@@ -12,3 +12,8 @@
 [2026-04-19 13:40] Renamed brand to "Anvaya Studio" globally across metadata, components, and documentation. [0.2]
 [2026-04-19 13:42] Redefined Tailwind "black" as dark gray #1E1E1E in the global theme and ensured consistency across all components. [0.3]
 [2026-04-19 13:47] Redesigned Navbar with a 6-step linear gradient and SVG logo. Updated Hero with a signature radial gradient, left-aligned typography, and white pill button. [1.2]
+[2026-04-19 13:49] Refined Hero background by stacking a linear gradient over the signature radial gradient for improved depth. [0.1]
+[2026-04-19 13:52] Reverted Hero background to lead-bg.png image. [0.1]
+[2026-04-19 13:54] Adjusted Hero headline font size to md:text-[80px] to match the two-line layout in the reference. [0.1]
+[2026-04-19 13:56] Optimized mobile Navbar: hidden navigation links and ensured single-line branding (flex-shrink & whitespace-nowrap). [0.1]
+[2026-04-19 13:57] Updated Services section to a 2x2 grid on mobile with optimized spacing and font sizes. [0.1]

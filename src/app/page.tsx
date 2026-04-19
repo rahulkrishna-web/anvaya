@@ -36,7 +36,9 @@ export default function Home() {
       <section 
         className="relative min-h-screen w-full flex flex-col items-start justify-center px-6 md:px-20 text-left pt-20"
         style={{
-          background: "radial-gradient(55.13% 128.99% at 37.34% 53.95%, #F8E19D 10.78%, #F0AC4D 28.85%, #E790A2 58.65%, #DCBDE7 78.85%, #B0C7EA 100%)"
+          backgroundImage: "url('/lead-bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center"
         }}
       >
         <Navbar onGetAccessClick={scrollToContact} />
@@ -44,10 +46,10 @@ export default function Home() {
         {/* Content Overlay */}
         <div className="z-10 flex flex-col items-start gap-8 max-w-6xl">
           <div className="flex flex-col gap-0">
-            <h1 className="text-7xl md:text-[120px] font-extralight tracking-tight text-black leading-[0.9] uppercase font-serif">
+            <h1 className="text-5xl md:text-[80px] font-extralight tracking-tight text-black leading-[1.1] uppercase font-serif">
               We connect the dots
             </h1>
-            <h1 className="text-7xl md:text-[120px] font-extralight tracking-tight text-black leading-[0.9] uppercase font-serif">
+            <h1 className="text-5xl md:text-[80px] font-extralight tracking-tight text-black leading-[1.1] uppercase font-serif">
               You get the results
             </h1>
           </div>
@@ -74,17 +76,17 @@ export default function Home() {
       {/* Section 3: Services (What We Do) */}
       <section className="px-6 py-32 md:px-20 bg-white">
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12 md:gap-12 text-center">
             {services.map((service, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-6">
-                <div className="w-20 h-20 flex items-center justify-center">
+              <div key={idx} className="flex flex-col items-center gap-4 md:gap-6">
+                <div className="w-14 h-14 md:w-20 md:h-20 flex items-center justify-center">
                   <img 
                     src={service.icon} 
                     alt={service.name} 
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold max-w-[150px] leading-tight text-black">
+                <h3 className="text-sm md:text-2xl font-bold max-w-[150px] leading-tight text-black uppercase font-serif">
                   {service.name}
                 </h3>
               </div>
