@@ -11,25 +11,6 @@ export default function Home() {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const services = [
-    { 
-      name: "Strategic Thinking", 
-      icon: "/icons/strategic-thinking.svg",
-    },
-    { 
-      name: "Brand Positioning", 
-      icon: "/icons/brand-positioning.svg",
-    },
-    { 
-      name: "Conversion & Websites", 
-      icon: "/icons/conversion.svg",
-    },
-    { 
-      name: "Creative Direction", 
-      icon: "/icons/creative-direction.svg",
-    },
-  ];
-
   return (
     <main className="flex min-h-screen flex-col bg-white text-black">
       {/* Section 1: Hero */}
@@ -73,25 +54,15 @@ export default function Home() {
       {/* Section 2: Marquee */}
       <Marquee />
 
-      {/* Section 3: Services (What We Do) */}
+      {/* Section 3: Services (Minimalist) */}
       <section className="px-6 py-32 md:px-20 bg-white">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12 md:gap-12 text-center">
-            {services.map((service, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-4 md:gap-6">
-                <div className="w-14 h-14 md:w-20 md:h-20 flex items-center justify-center">
-                  <img 
-                    src={service.icon} 
-                    alt={service.name} 
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="text-sm md:text-2xl font-bold max-w-[150px] leading-tight text-black uppercase font-serif">
-                  {service.name}
-                </h3>
-              </div>
-            ))}
-          </div>
+        <div className="mx-auto max-w-7xl flex flex-col gap-6">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-black uppercase">
+            Strategy. Creative. Performance.
+          </h2>
+          <p className="text-xl md:text-2xl font-light text-black/60">
+            Built to work together.
+          </p>
         </div>
       </section>
 

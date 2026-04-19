@@ -17,3 +17,5 @@
 [2026-04-19 13:54] Adjusted Hero headline font size to md:text-[80px] to match the two-line layout in the reference. [0.1]
 [2026-04-19 13:56] Optimized mobile Navbar: hidden navigation links and ensured single-line branding (flex-shrink & whitespace-nowrap). [0.1]
 [2026-04-19 13:57] Updated Services section to a 2x2 grid on mobile with optimized spacing and font sizes. [0.1]
+[2026-04-19 15:54] Redesigned Services section to a minimalist text-focused layout: "STRATEGY. CREATIVE. PERFORMANCE." [0.3]
+[2026-04-19 16:00] Updated site favicon to public/favicon.png via layout metadata. [0.1]

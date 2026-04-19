@@ -6,6 +6,9 @@ import MarketingTracker from "@/components/MarketingTracker";
 export const metadata: Metadata = {
   title: "Anvaya Studio | Strategy, Design, Growth",
   description: "We connect the dots. You get results. A premier agency for strategic brand growth and creative direction.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
