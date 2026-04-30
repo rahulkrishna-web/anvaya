@@ -20,3 +20,4 @@
 [2026-04-19 15:54] Redesigned Services section to a minimalist text-focused layout: "STRATEGY. CREATIVE. PERFORMANCE." [0.3]
 [2026-04-19 16:00] Updated site favicon to public/favicon.png via layout metadata. [0.1]
 [2026-04-30 13:16] Updated site favicon to public/anvaya-favicon.png in layout metadata. [0.1]
+[2026-04-30 13:20] Resized favicon to 64x64 (5.2KB), removed src/app/favicon.ico to avoid conflict, and added cache-busting version query. [0.2]
