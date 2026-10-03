@@ -21,3 +21,4 @@
 [2026-04-19 16:00] Updated site favicon to public/favicon.png via layout metadata. [0.1]
 [2026-04-30 13:16] Updated site favicon to public/anvaya-favicon.png in layout metadata. [0.1]
 [2026-04-30 13:20] Resized favicon to 64x64 (5.2KB), removed src/app/favicon.ico to avoid conflict, and added cache-busting version query. [0.2]
+[2026-10-03 20:46] Added "View Portfolio" button linked to Canva portfolio to the left of "Let's Connect" in hero section. [0.2]
