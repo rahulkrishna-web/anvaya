@@ -41,18 +41,18 @@ export default function Home() {
               Full website coming soon.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <div className="flex flex-row items-center gap-3 sm:gap-4">
               <a
                 href="https://canva.link/anvayastudio"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-12 py-5 bg-white text-black rounded-full font-medium shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.15)] transition-all active:scale-95 text-lg inline-flex items-center justify-center"
+                className="px-6 py-3.5 sm:px-10 md:px-12 sm:py-4 md:py-5 bg-white text-black rounded-full font-medium shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.15)] transition-all active:scale-95 text-sm sm:text-base md:text-lg inline-flex items-center justify-center whitespace-nowrap"
               >
                 View Portfolio
               </a>
               <button 
                 onClick={scrollToContact}
-                className="px-12 py-5 bg-white text-black rounded-full font-medium shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.15)] transition-all active:scale-95 text-lg"
+                className="px-6 py-3.5 sm:px-10 md:px-12 sm:py-4 md:py-5 bg-white text-black rounded-full font-medium shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.15)] transition-all active:scale-95 text-sm sm:text-base md:text-lg whitespace-nowrap"
               >
                 Let&apos;s Connect
               </button>
